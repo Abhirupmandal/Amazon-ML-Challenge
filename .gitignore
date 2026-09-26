@@ -1,0 +1,90 @@
+# ==============================================================================
+# Global Gitignore for Amazon ML Challenge 2026
+# ==============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Python distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Operating System Specific Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+__MACOSX/
+
+# IDE and Editor Files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.gemini/
+
+# Jupyter Notebook & Testing Caches
+.ipynb_checkpoints
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Hugging Face & PyTorch Caches
+.cache/
+hf_cache/
+huggingface/
+*.tmp
+
+# Logging & Task Diagnostics
+*.log
+.system_generated/
+
+# Archives & Large Bundles
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# Scratch & Temporary Directories
+scratch/
+tmp/
+temp/
+
+# Large Datasets (excluded from Git repository)
+dataset/
+**/dataset/
+
