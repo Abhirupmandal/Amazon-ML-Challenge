@@ -215,7 +215,7 @@ For each Source 1 entity:
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/studioussagar/Amazon-ML-Challenge.git
-cd Amazon-ML-Challenge/Classical-Supervised-ML-Pairwise-Classification
+cd Amazon-ML-Challenge/Classical Supervised ML Pairwise Classification
 ```
 
 ### 2. Create and Activate Virtual Environment
