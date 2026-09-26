@@ -1,0 +1,104 @@
+# ==============================================================================
+# Git Ignore Configuration - Amazon ML Challenge 2026
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Challenge Internal Implementation Prompts & Planning Documents
+# (Must never be uploaded to GitHub)
+# ------------------------------------------------------------------------------
+AntiGravity_Amazon_ML_Challenge_Implementation_Prompt.md
+Amazon_ML_Challenge_6_Phase_Implementation_Plan.md
+*.prompt.md
+*.plan.md
+
+# ------------------------------------------------------------------------------
+# 2. Large Datasets & Raw Inputs (>100MB GitHub limit)
+# ------------------------------------------------------------------------------
+dataset/
+data/
+*.parquet
+
+# ------------------------------------------------------------------------------
+# 3. Intermediate Work Artifacts & Databases
+# (DuckDB blocking indexes are ~8 GB total)
+# ------------------------------------------------------------------------------
+work/indexes/
+work/cache/
+work/temp/
+*.duckdb
+*.duckdb.wal
+*.sqlite
+*.db
+
+# ------------------------------------------------------------------------------
+# 4. Large Output Submission Files (>100MB GitHub file limit)
+# (output/candidate_pairs.tsv is ~370MB, output/matching_results.tsv is ~74MB)
+# Keep directory structure with .gitkeep
+# ------------------------------------------------------------------------------
+output/*.tsv
+output/*.tmp
+output/*.zip
+!output/.gitkeep
+
+# ------------------------------------------------------------------------------
+# 5. Virtual Environments
+# ------------------------------------------------------------------------------
+.amvenv/
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# 6. Python Bytecode, Caches & Jupyter Checkpoints
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# ------------------------------------------------------------------------------
+# 7. IDE, Editor & OS Specific Files
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.pydevproject
+.settings/
+
+# Agent / Tooling runtime logs & states
+.gemini/
+.system_generated/
+*.log
+scratch/

@@ -1,0 +1,24 @@
+# ==============================================================================
+# Business Entity Resolution Pipeline — Amazon ML Challenge 2026
+# Core Dependencies
+# ==============================================================================
+
+# Fast columnar storage and disk-backed persistent blocking index
+duckdb>=1.0.0
+
+# Supervised gradient boosted pairwise matching classifier
+lightgbm>=4.0.0
+
+# Multilingual script transliteration (Indic scripts to Latin)
+Unidecode>=1.3.0
+
+# Machine learning utilities, metrics, and data structures
+scikit-learn>=1.3.0
+scipy>=1.10.0
+
+# Data manipulation and vectorized numeric computing
+numpy>=1.24.0
+pandas>=2.0.0
+
+# System monitoring (RAM, process tracking, runtime instrumentation)
+psutil>=5.9.0
