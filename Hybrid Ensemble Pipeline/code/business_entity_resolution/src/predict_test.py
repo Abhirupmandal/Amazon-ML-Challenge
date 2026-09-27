@@ -88,8 +88,13 @@ def run_test_pipeline(
     print(f"Loaded trained model: {type(model).__name__}", flush=True)
     print(f"Per-country thresholds: {thresholds}", flush=True)
 
-    matching_out = config.MATCHING_RESULTS_PATH
-    candidate_out = config.CANDIDATE_PAIRS_PATH
+    if target_countries and len(target_countries) == 1:
+        c_tag = target_countries[0].lower()
+        matching_out = config.OUTPUT_DIR / f"matching_results_{c_tag}.tsv"
+        candidate_out = config.OUTPUT_DIR / f"candidate_pairs_{c_tag}.tsv"
+    else:
+        matching_out = config.MATCHING_RESULTS_PATH
+        candidate_out = config.CANDIDATE_PAIRS_PATH
 
     processed_s1_ids: Set[str] = set()
     claimed_candidates: Set[str] = set()
@@ -354,9 +359,32 @@ def run_test_pipeline(
                         claimed_candidates.add(cid)
                         chunk_matches_map[sid].append(cid)
 
+                # Adaptive high-confidence fallback: rescue entities that had no candidate pass 'th'
+                # but have an exceptionally strong candidate match (Jaro-Winkler >= 0.85, prob >= 0.25)
+                best_prob_for_s1: Dict[str, float] = {}
+                best_cand_for_s1: Dict[str, str] = {}
+                best_jw_for_s1: Dict[str, float] = {}
+                for p in range(n_pairs):
+                    sid_p = ch_pairs_s1[p]
+                    pr = float(probs[p])
+                    if sid_p not in best_prob_for_s1 or pr > best_prob_for_s1[sid_p]:
+                        best_prob_for_s1[sid_p] = pr
+                        best_cand_for_s1[sid_p] = ch_pairs_cand[p]
+                        best_jw_for_s1[sid_p] = float(f_jw[p])
+
+                for i in range(start, end):
+                    sid_i = s1_ids[i]
+                    if not chunk_matches_map[sid_i] and sid_i in best_prob_for_s1:
+                        if best_prob_for_s1[sid_i] >= 0.25 and best_jw_for_s1[sid_i] >= 0.85:
+                            cid = best_cand_for_s1[sid_i]
+                            if cid not in claimed_candidates:
+                                claimed_candidates.add(cid)
+                                chunk_matches_map[sid_i].append(cid)
+
                 del m_s1, m_cand, f_tfidf, X_chunk, probs, sorted_idx
                 del s1_n_toks, s1_a_toks, s1_snd, cand_n_toks, cand_a_toks, cand_snd
                 del f_lev, f_jw, f_name_jaccard, f_addr_jaccard, f_phonetic, f_country, f_len_diff
+                del best_prob_for_s1, best_cand_for_s1, best_jw_for_s1
 
             # Append results directly to output TSVs
             with open(matching_out, "a", encoding="utf-8") as f_match:

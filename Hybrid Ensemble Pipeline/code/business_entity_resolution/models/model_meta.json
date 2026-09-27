@@ -1,7 +1,8 @@
 {
   "thresholds": {
-    "india": 0.8,
-    "us": 0.8
+    "india": 0.42,
+    "us": 0.46,
+    "france": 0.44
   },
   "features": [
     "name_levenshtein",
