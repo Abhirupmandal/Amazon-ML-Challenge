@@ -1,12 +1,17 @@
 """
 Feature engineering module for pairwise business entity matching.
-Extracts 17 highly discriminative, computationally efficient features across
+Extracts 16 highly discriminative, computationally efficient features across
 name similarity, address similarity, numeric tokens, country compatibility, and blocking provenance.
 Includes vectorized batch extraction for high-throughput pipeline execution.
 """
 
-from typing import Set, Tuple, List, Optional
+from typing import Set, Tuple, List
 import numpy as np
+
+try:
+    from src.candidate_scoring import jaccard_similarity
+except ImportError:
+    from .candidate_scoring import jaccard_similarity
 
 
 def get_char_ngrams(text: str, n: int = 3) -> Set[str]:
@@ -33,13 +38,8 @@ def char_dice_similarity(text1: str, text2: str, n: int = 3) -> float:
     return (2.0 * intersection) / total
 
 
-def jaccard(s1: Set[str], s2: Set[str]) -> float:
-    """Compute Jaccard similarity between two sets."""
-    if not s1 or not s2:
-        return 0.0
-    inter = len(s1 & s2)
-    union = len(s1 | s2)
-    return inter / union if union > 0 else 0.0
+# Standard set Jaccard similarity
+jaccard = jaccard_similarity
 
 
 FEATURE_NAMES = [

@@ -34,7 +34,7 @@ try:
         MAX_KEY_FREQUENCY
     )
     from src.io import count_tsv_rows, load_ground_truth_map, DELIM
-    from src.indexing import build_persistent_index, get_duckdb_connection, is_index_built
+    from src.indexing import build_persistent_index, get_duckdb_connection
     from src.retrieval import retrieve_candidates_batch, ensure_s1_table
     from src.features import extract_features_batch
     from src.model import PairwiseClassifier, calibrate_threshold
@@ -51,7 +51,7 @@ except ImportError:
         MAX_KEY_FREQUENCY
     )
     from .io import count_tsv_rows, load_ground_truth_map, DELIM
-    from .indexing import build_persistent_index, get_duckdb_connection, is_index_built
+    from .indexing import build_persistent_index, get_duckdb_connection
     from .retrieval import retrieve_candidates_batch, ensure_s1_table
     from .features import extract_features_batch
     from .model import PairwiseClassifier, calibrate_threshold

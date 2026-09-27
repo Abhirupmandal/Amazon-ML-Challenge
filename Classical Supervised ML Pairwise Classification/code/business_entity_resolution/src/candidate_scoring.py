@@ -1,10 +1,10 @@
 """
-Deterministic cheap candidate scoring module.
-Computes inexpensive heuristic scores to rank and prune candidate pools
-before expensive ML feature engineering.
+Deterministic candidate scoring module.
+Phase 4: Computes lightweight heuristic scores combining rule weights
+and token overlaps to rank and evaluate candidate pairs before feature engineering.
 """
 
-from typing import Set, List, Dict, Tuple, Optional
+from typing import Set, Tuple
 
 # Weights for blocking rules reflecting their discriminative precision
 RULE_WEIGHTS = {
@@ -38,16 +38,16 @@ def compute_cheap_score(
 ) -> float:
     """
     Compute a fast deterministic score combining rule provenance and token overlap.
-    s1_norm / cand_norm tuple schema:
+    Tuple schema:
     (name_norm, name_compact, addr_norm, addr_compact, country, name_toks, addr_toks, num_toks)
     """
     (
-        s1_name_norm, s1_name_compact, s1_addr_norm, s1_addr_compact,
+        _, s1_name_compact, _, _,
         s1_country, s1_name_toks, s1_addr_toks, s1_num_toks
     ) = s1_norm
 
     (
-        c_name_norm, c_name_compact, c_addr_norm, c_addr_compact,
+        _, c_name_compact, _, _,
         c_country, c_name_toks, c_addr_toks, c_num_toks
     ) = cand_norm
 

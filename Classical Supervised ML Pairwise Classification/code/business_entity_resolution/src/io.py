@@ -4,7 +4,6 @@ Strictly conforms to the competition TSV rules: UTF-8 encoding, explicit tab sep
 comma-separated ID lists, empty string representation for non-matches.
 """
 
-import os
 from pathlib import Path
 from typing import Generator, List, Dict, Set, Tuple, Optional
 

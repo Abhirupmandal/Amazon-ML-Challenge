@@ -5,10 +5,9 @@ with frequency statistics and frequency pruning to avoid false candidate explosi
 """
 
 import os
-import sys
 import time
 from pathlib import Path
-from typing import Tuple, Dict, Any, Optional
+from typing import Optional
 
 import duckdb
 from unidecode import unidecode

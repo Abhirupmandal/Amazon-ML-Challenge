@@ -6,7 +6,7 @@ compact, tokenized, and numeric-token representations for indexing and blocking.
 
 import re
 import unicodedata
-from typing import List, Tuple, Set, Optional
+from typing import List, Tuple, Optional
 
 try:
     from unidecode import unidecode

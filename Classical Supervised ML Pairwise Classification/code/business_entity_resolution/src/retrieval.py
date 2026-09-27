@@ -6,7 +6,7 @@ Uses 8 matching blocking rules for high recall.
 """
 
 from pathlib import Path
-from typing import List, Tuple, Dict, Any, Set
+from typing import List, Tuple
 import duckdb
 
 try:

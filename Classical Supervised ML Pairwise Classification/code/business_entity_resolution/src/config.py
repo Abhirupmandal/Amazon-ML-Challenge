@@ -4,7 +4,6 @@ Centralizes all dataset paths, index paths, parameters, candidate budgets, and r
 """
 
 from pathlib import Path
-import os
 
 # Base paths
 PROJECT_ROOT = Path(__file__).resolve().parents[3]

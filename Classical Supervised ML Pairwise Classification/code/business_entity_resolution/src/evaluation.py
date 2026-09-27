@@ -4,9 +4,8 @@ Computes macro F0.5, precision, recall, singleton performance, candidate recall,
 and dissects errors between blocking misses and ML threshold rejections.
 """
 
-from typing import Dict, Set, List, Optional, Tuple
+from typing import Dict, Set, Optional
 import json
-import sys
 from pathlib import Path
 
 try:

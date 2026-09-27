@@ -169,9 +169,9 @@ For each Source 1 entity:
 ## Repository Structure
 
 ```text
-├── .gitignore                                # Excludes prompts, plans, raw datasets & caches
+├── .gitignore                                # Git ignore configuration
 ├── README.md                                 # Complete project documentation (this file)
-├── Documentation.md                          # Official competition solution write-up
+├── Documentation_template.md                 # Official competition solution write-up
 ├── requirements.txt                          # Pinned third-party dependencies
 ├── run_pipeline.py                           # Root-level entrypoint runner
 │
@@ -214,8 +214,8 @@ For each Source 1 entity:
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/studioussagar/Amazon-ML-Challenge.git
-cd Amazon-ML-Challenge/Classical Supervised ML Pairwise Classification
+git clone https://github.com/your-username/amazon-ml-challenge-entity-resolution.git
+cd amazon-ml-challenge-entity-resolution
 ```
 
 ### 2. Create and Activate Virtual Environment
